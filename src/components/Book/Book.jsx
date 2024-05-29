@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Book = ({ book }) => {
-    const { image, tags, bookName, author, category, rating } = book;
+    const { bookId, image, tags, bookName, author, category, rating } = book;
     return (
-        <div className="card bg-base-100 shadow-xl border border-slate-300 p-4">
+        <Link to={`/book-details/${bookId}`} className="card bg-base-100 shadow-xl border border-slate-300 p-4" id='book-card'>
             <figure>
                 <img src={image} alt="Recipes" className="rounded-xl" />
             </figure>
@@ -29,7 +30,7 @@ const Book = ({ book }) => {
                 </div>
                 {/* <button onClick={() => handleWantToCook(recipe)} className="btn bg-[#0BE58A] hover:bg-[#0be58ecd] border-none rounded-3xl text-black min-h-10 h-10 font-normal">Want to Cook</button> */}
             </div>
-        </div>
+        </Link>
     );
 };
 
