@@ -1,0 +1,155 @@
+[
+    {
+        "bookId": 1,
+        "bookName": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "image": "/book-cover/book-1.jpg",
+        "review": "A gripping, heart-wrenching, and wholly remarkable tale of coming-of-age in a South poisoned by virulent prejudice.",
+        "totalPages": 336,
+        "rating": 4.8,
+        "category": "Fiction",
+        "tags": [
+            "Classic",
+            "Historical",
+            "Courtroom Drama"
+        ],
+        "publisher": "J.B. Lippincott & Co.",
+        "yearOfPublishing": 1960
+    },
+    {
+        "bookId": 2,
+        "bookName": "1984",
+        "author": "George Orwell",
+        "image": "/book-cover/book-2.jpg",
+        "review": "A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism.",
+        "totalPages": 328,
+        "rating": 4.7,
+        "category": "Science Fiction",
+        "tags": [
+            "Dystopia",
+            "Political",
+            "Classic"
+        ],
+        "publisher": "Secker & Warburg",
+        "yearOfPublishing": 1949
+    },
+    {
+        "bookId": 3,
+        "bookName": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "image": "/book-cover/book-3.jpg",
+        "review": "A novel of the Jazz Age that examines and critiques the American dream.",
+        "totalPages": 180,
+        "rating": 4.5,
+        "category": "Fiction",
+        "tags": [
+            "Classic",
+            "American Literature",
+            "Romance"
+        ],
+        "publisher": "Charles Scribner's Sons",
+        "yearOfPublishing": 1925
+    },
+    {
+        "bookId": 4,
+        "bookName": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "image": "/book-cover/book-4.jpg",
+        "review": "A romantic novel of manners that depicts the genteel rural society of early 19th-century England.",
+        "totalPages": 279,
+        "rating": 4.6,
+        "category": "Romance",
+        "tags": [
+            "Classic",
+            "Romantic",
+            "Social Commentary"
+        ],
+        "publisher": "T. Egerton",
+        "yearOfPublishing": 1813
+    },
+    {
+        "bookId": 5,
+        "bookName": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "image": "/book-cover/book-5.jpg",
+        "review": "A story about adolescent alienation and loss of innocence in the protagonist Holden Caulfield.",
+        "totalPages": 277,
+        "rating": 4.0,
+        "category": "Fiction",
+        "tags": [
+            "Classic",
+            "Young Adult",
+            "Psychological"
+        ],
+        "publisher": "Little, Brown and Company",
+        "yearOfPublishing": 1951
+    },
+    {
+        "bookId": 6,
+        "bookName": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "image": "/book-cover/book-6.jpg",
+        "review": "A prelude to the Lord of the Rings, the story follows Bilbo Baggins on a quest to reclaim a stolen treasure.",
+        "totalPages": 310,
+        "rating": 4.8,
+        "category": "Fantasy",
+        "tags": [
+            "Adventure",
+            "Fantasy",
+            "Epic"
+        ],
+        "publisher": "George Allen & Unwin",
+        "yearOfPublishing": 1937
+    },
+    {
+        "bookId": 7,
+        "bookName": "Brave New World",
+        "author": "Aldous Huxley",
+        "image": "/book-cover/book-7.jpg",
+        "review": "A dystopian novel that explores the implications of a technologically advanced society.",
+        "totalPages": 268,
+        "rating": 4.2,
+        "category": "Science Fiction",
+        "tags": [
+            "Dystopia",
+            "Philosophical",
+            "Classic"
+        ],
+        "publisher": "Chatto & Windus",
+        "yearOfPublishing": 1932
+    },
+    {
+        "bookId": 8,
+        "bookName": "Moby-Dick",
+        "author": "Herman Melville",
+        "image": "/book-cover/book-8.jpg",
+        "review": "An epic tale of the voyage of the whaling ship Pequod, and its captain Ahab's obsessive quest to kill the white whale, Moby-Dick.",
+        "totalPages": 635,
+        "rating": 4.1,
+        "category": "Adventure",
+        "tags": [
+            "Classic",
+            "Adventure",
+            "Sea Story"
+        ],
+        "publisher": "Harper & Brothers",
+        "yearOfPublishing": 1851
+    },
+    {
+        "bookId": 9,
+        "bookName": "War and Peace",
+        "author": "Leo Tolstoy",
+        "image": "/book-cover/book-9.jpg",
+        "review": "A historical novel that interweaves the lives of individuals against the backdrop of the Napoleonic Wars.",
+        "totalPages": 1225,
+        "rating": 4.4,
+        "category": "Historical Fiction",
+        "tags": [
+            "Classic",
+            "Historical",
+            "Epic"
+        ],
+        "publisher": "The Russian Messenger",
+        "yearOfPublishing": 1869
+    }
+]
