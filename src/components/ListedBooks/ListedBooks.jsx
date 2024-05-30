@@ -1,6 +1,11 @@
-import { useLoaderData } from "react-router-dom";
-import { getbooksFromLocalStorage } from "../../utilities/localStorage";
+import { Link, useLoaderData } from "react-router-dom";
+import { getbooksFromLocalStorage, storeBooks } from "../../utilities/localStorage";
 import { useEffect, useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import { IoIosArrowDown } from "react-icons/io";
+import ReadBooks from "../ReadBooks/ReadBooks";
+import WishlistBooks from "../WishlistBooks/WishlistBooks";
 
 const ListedBooks = () => {
     const bookData = useLoaderData();
@@ -10,18 +15,42 @@ const ListedBooks = () => {
         const getStoredBooks = getbooksFromLocalStorage();
         if (bookData) {
             const storedBook = bookData.filter(book => getStoredBooks.includes(book.bookId));
-            console.log(storedBook);
+            setStoredBooks(storedBook);
         }
 
-
-
-
-        setStoredBooks(getStoredBooks)
-    }, [])
+    }, []);
 
     return (
         <div>
-            <h2>Listed Books: {storedBooks.length}</h2>
+            <h2 className="bg-slate-200 py-6 rounded-xl text-center text-3xl font-semibold">Books</h2>
+            <div className="flex justify-center my-4">
+                <details className="dropdown">
+                    <summary className="m-1 btn bg-[#23BE0A] text-white min-h-10 h-10">Sort By<span className="font-extrabold text-lg"><IoIosArrowDown /></span></summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                        <li><a>Rating</a></li>
+                        <li><a>Number of Pages</a></li>
+                        <li><a>Published Year</a></li>
+                    </ul>
+                </details>
+            </div>
+
+            <Tabs>
+                <TabList>
+                    <Tab>Read Books</Tab>
+                    <Tab>Wishlist Books</Tab>
+                </TabList>
+
+                <TabPanel >
+                    <div className="space-y-4">
+                        {
+                            storedBooks.map(storedBook => <ReadBooks storedBook={storedBook} key={storedBook.bookId}></ReadBooks>)
+                        }
+                    </div>
+                </TabPanel>
+                <TabPanel>
+                    <WishlistBooks></WishlistBooks>
+                </TabPanel>
+            </Tabs>
         </div>
     );
 };
