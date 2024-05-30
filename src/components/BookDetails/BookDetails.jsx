@@ -1,4 +1,8 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { getbooksFromLocalStorage, storeBooks } from "../../utilities/localStorage";
+import { useEffect, useState } from "react";
 
 const BookDetails = () => {
     const bookData = useLoaderData();
@@ -6,11 +10,41 @@ const BookDetails = () => {
     const bookIdNumber = parseInt(bookId);
     const book = bookData.find(book => book.bookId === bookIdNumber);
 
+    // const [storedBooks, setStoredBooks] = useState([]);
+    // useEffect(() => {
+    //     const getStoredBooks = getbooksFromLocalStorage();
+    //     setStoredBooks(getStoredBooks)
+    // }, [])
+
+    const handleRead = () => {
+        // if (!storedBooks.includes(bookIdNumber)) {
+        //     storeBooks(bookIdNumber);
+        //     toast("Book added to Read list");
+        // } else {
+        //     toast("Book already added to the list. You can't select this book again.");
+        // }
+        storeBooks(bookIdNumber);
+        toast("Book added to Read list");
+    }
+
+
+
+
+
+
+
+
+
+    const handleWishlist = () => {
+        toast("Book added to Wishlist");
+    }
+
     return (
         <div>
             <div className="card grid sm:grid-cols-2 lg:card-side bg-base-100 shadow-xl">
                 <figure><img src={book.image} className="h-full" alt="Album" /></figure>
                 <div className="card-body p-4">
+                    <ToastContainer />
                     <h2 className="card-title">{book.bookName}</h2>
                     <p className="text-sm">By : {book.author}</p>
                     <hr className="border-t-1 border-slate-400" />
@@ -40,8 +74,8 @@ const BookDetails = () => {
                         <p>{book.rating}</p>
                     </div>
                     <div className="card-actions justify-start">
-                        <button className="btn bg-white text-black hover:text-[#23BE0A] border-slate-300 hover:bg-[#E2E8F0] hover:border-[#fff]">Read</button>
-                        <button className="btn bg-[#59C6D2] text-white hover:text-[#59C6D2] hover:bg-[#E2E8F0] hover:border-[#fff]">Wishlist</button>
+                        <button onClick={handleRead} className="btn bg-white text-black hover:text-[#23BE0A] border-slate-300 hover:bg-[#E2E8F0] hover:border-[#fff]">Read</button>
+                        <button onClick={() => handleWishlist(bookId)} className="btn bg-[#59C6D2] text-white hover:text-[#59C6D2] hover:bg-[#E2E8F0] hover:border-[#fff]">Wishlist</button>
                     </div>
                 </div>
             </div>
