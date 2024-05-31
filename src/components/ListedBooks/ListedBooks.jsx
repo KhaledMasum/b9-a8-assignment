@@ -1,5 +1,5 @@
-import { Link, useLoaderData } from "react-router-dom";
-import { getbooksFromLocalStorage, storeBooks } from "../../utilities/localStorage";
+import { useLoaderData } from "react-router-dom";
+import { getReadBooksFromLocalStorage, getWishlistBooksFromLocalStorage } from "../../utilities/localStorage";
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -10,15 +10,20 @@ import WishlistBooks from "../WishlistBooks/WishlistBooks";
 const ListedBooks = () => {
     const bookData = useLoaderData();
 
-    const [storedBooks, setStoredBooks] = useState([]);
-    useEffect(() => {
-        const getStoredBooks = getbooksFromLocalStorage();
-        if (bookData) {
-            const storedBook = bookData.filter(book => getStoredBooks.includes(book.bookId));
-            setStoredBooks(storedBook);
-        }
+    const [storedReadBooks, setStoredBooks] = useState([]);
+    const [storedWishlistBooks, setStoredWishlistBooks] = useState([]);
 
-    }, []);
+    useEffect(() => {
+        const getStoredReadBooks = getReadBooksFromLocalStorage();
+        const getStoredWishlistBooks = getWishlistBooksFromLocalStorage();
+        if (bookData) {
+            const storedBook = bookData.filter(book => getStoredReadBooks.includes(book.bookId));
+            setStoredBooks(storedBook);
+
+            const storedWishlistBook = bookData.filter(book => getStoredWishlistBooks.includes(book.bookId));
+            setStoredWishlistBooks(storedWishlistBook);
+        }
+    }, [bookData]);
 
     return (
         <div>
@@ -43,12 +48,16 @@ const ListedBooks = () => {
                 <TabPanel >
                     <div className="space-y-4">
                         {
-                            storedBooks.map(storedBook => <ReadBooks storedBook={storedBook} key={storedBook.bookId}></ReadBooks>)
+                            storedReadBooks.map(storedBook => <ReadBooks storedBook={storedBook} key={storedBook.bookId}></ReadBooks>)
                         }
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <WishlistBooks></WishlistBooks>
+                    <div className="space-y-4">
+                        {
+                            storedWishlistBooks.map(storedWishlistBook => <WishlistBooks storedWishlistBook={storedWishlistBook} key={storedWishlistBook.bookId}></WishlistBooks>)
+                        }
+                    </div>
                 </TabPanel>
             </Tabs>
         </div>

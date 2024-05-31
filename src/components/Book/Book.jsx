@@ -10,7 +10,6 @@ const Book = ({ book }) => {
                 <img src={image} alt="Recipes" className="rounded-xl" />
             </figure>
             <div className="space-y-2 pt-4">
-                <h2 className="card-title font-semibold">Ingredients: {tags.length}</h2>
                 <div className='flex gap-4'>
                     {
                         tags.map((tag, idx) => <p key={idx} className="text-sm bg-slate-200 px-3 py-1 rounded-md text-[#23BE0A]">{tag}</p>)
@@ -28,7 +27,6 @@ const Book = ({ book }) => {
                         <FaStar />
                     </div>
                 </div>
-                {/* <button onClick={() => handleWantToCook(recipe)} className="btn bg-[#0BE58A] hover:bg-[#0be58ecd] border-none rounded-3xl text-black min-h-10 h-10 font-normal">Want to Cook</button> */}
             </div>
         </Link>
     );

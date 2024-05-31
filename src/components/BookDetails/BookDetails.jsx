@@ -1,42 +1,36 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getbooksFromLocalStorage, storeBooks } from "../../utilities/localStorage";
+import { getReadBooksFromLocalStorage, storeBooks, getWishlistBooksFromLocalStorage, storeWishlistBooks } from "../../utilities/localStorage";
 import { useEffect, useState } from "react";
 
 const BookDetails = () => {
+    const [storedBooks, setStoredBooks] = useState([]);
+    const [storedWishlistBooks, setStoredWishlistBooks] = useState([]);
+
+    useEffect(() => {
+        const getStoredBooks = getReadBooksFromLocalStorage();
+        setStoredBooks(getStoredBooks);
+
+        const getWishlistStoredBooks = getWishlistBooksFromLocalStorage();
+        setStoredWishlistBooks(getWishlistStoredBooks);
+    }, []);
+
     const bookData = useLoaderData();
     const { bookId } = useParams();
     const bookIdNumber = parseInt(bookId);
     const book = bookData.find(book => book.bookId === bookIdNumber);
 
-    // const [storedBooks, setStoredBooks] = useState([]);
-    // useEffect(() => {
-    //     const getStoredBooks = getbooksFromLocalStorage();
-    //     setStoredBooks(getStoredBooks)
-    // }, [])
-
-    const handleRead = () => {
-        // if (!storedBooks.includes(bookIdNumber)) {
-        //     storeBooks(bookIdNumber);
-        //     toast("Book added to Read list");
-        // } else {
-        //     toast("Book already added to the list. You can't select this book again.");
-        // }
-        storeBooks(bookIdNumber);
-        toast("Book added to Read list");
+    const handleRead = (id) => {
+        if (!storedBooks.includes(id)) {
+            storeBooks(id);
+        }
     }
 
-
-
-
-
-
-
-
-
-    const handleWishlist = () => {
-        toast("Book added to Wishlist");
+    const handleWishlist = (id) => {
+        if (!storedWishlistBooks.includes(id)) {
+            storeWishlistBooks(id);
+        }
     }
 
     return (
@@ -74,8 +68,8 @@ const BookDetails = () => {
                         <p>{book.rating}</p>
                     </div>
                     <div className="card-actions justify-start">
-                        <button onClick={handleRead} className="btn bg-white text-black hover:text-[#23BE0A] border-slate-300 hover:bg-[#E2E8F0] hover:border-[#fff]">Read</button>
-                        <button onClick={() => handleWishlist(bookId)} className="btn bg-[#59C6D2] text-white hover:text-[#59C6D2] hover:bg-[#E2E8F0] hover:border-[#fff]">Wishlist</button>
+                        <button onClick={() => handleRead(bookIdNumber)} className="btn bg-white text-black hover:text-[#23BE0A] border-slate-300 hover:bg-[#E2E8F0] hover:border-[#fff]">Read</button>
+                        <button onClick={() => handleWishlist(bookIdNumber)} className="btn bg-[#59C6D2] text-white hover:text-[#59C6D2] hover:bg-[#E2E8F0] hover:border-[#fff]">Wishlist</button>
                     </div>
                 </div>
             </div>
