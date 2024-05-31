@@ -40,6 +40,20 @@ const Header = () => {
                                 color: isActive ? "#23BE0A" : "rgb(51 65 85)"
                             };
                         }}>Pages To Read</NavLink></li>
+                        <li><NavLink to={'/authors'} style={({ isActive }) => {
+                            return {
+                                border: isActive ? "1px solid #23BE0A" : "1px solid transparent",
+                                backgroundColor: isActive ? "#fff" : "#fff",
+                                color: isActive ? "#23BE0A" : "rgb(51 65 85)"
+                            };
+                        }}>Authors</NavLink></li>
+                        <li><NavLink to={'/publishers'} style={({ isActive }) => {
+                            return {
+                                border: isActive ? "1px solid #23BE0A" : "1px solid transparent",
+                                backgroundColor: isActive ? "#fff" : "#fff",
+                                color: isActive ? "#23BE0A" : "rgb(51 65 85)"
+                            };
+                        }}>Publishers</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
