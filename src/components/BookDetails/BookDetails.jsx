@@ -35,7 +35,7 @@ const BookDetails = () => {
 
     return (
         <div>
-            <div className="card grid sm:grid-cols-2 lg:card-side bg-base-100 shadow-xl">
+            <div className="card grid sm:grid-cols-2 lg:card-side bg-base-100 shadow-xl rounded-none sm:rounded-2xl">
                 <figure><img src={book.image} className="h-full" alt="Album" /></figure>
                 <div className="card-body p-4">
                     <ToastContainer />

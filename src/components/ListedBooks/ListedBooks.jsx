@@ -13,28 +13,46 @@ const ListedBooks = () => {
     const [storedReadBooks, setStoredBooks] = useState([]);
     const [storedWishlistBooks, setStoredWishlistBooks] = useState([]);
 
+    const [displayReadBooks, setDisplayBooks] = useState([]);
+    // const [displayWishlistBooks, setDisplayWishlistBooks] = useState([]);
+
     useEffect(() => {
         const getStoredReadBooks = getReadBooksFromLocalStorage();
         const getStoredWishlistBooks = getWishlistBooksFromLocalStorage();
         if (bookData) {
             const storedBook = bookData.filter(book => getStoredReadBooks.includes(book.bookId));
             setStoredBooks(storedBook);
+            setDisplayBooks(storedBook);
 
             const storedWishlistBook = bookData.filter(book => getStoredWishlistBooks.includes(book.bookId));
             setStoredWishlistBooks(storedWishlistBook);
         }
     }, [bookData]);
 
+    const handleBookFilter = sort => {
+        let sortedBooks = [...storedReadBooks];
+
+        if (sort === 'pageNumber') {
+            sortedBooks.sort((a, b) => b.totalPages - a.totalPages);
+        } else if (sort === 'rating') {
+            sortedBooks.sort((a, b) => b.rating - a.rating);
+        } else if (sort === 'publishedYear') {
+            sortedBooks.sort((a, b) => b.yearOfPublishing - a.yearOfPublishing);
+        }
+
+        setDisplayBooks(sortedBooks);
+    }
+
     return (
-        <div>
+        <div className="p-4 sm:p-0">
             <h2 className="bg-slate-200 py-6 rounded-xl text-center text-3xl font-semibold">Books</h2>
             <div className="flex justify-center my-4">
                 <details className="dropdown">
                     <summary className="m-1 btn bg-[#23BE0A] text-white min-h-10 h-10">Sort By<span className="font-extrabold text-lg"><IoIosArrowDown /></span></summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                        <li><a>Rating</a></li>
-                        <li><a>Number of Pages</a></li>
-                        <li><a>Published Year</a></li>
+                        <li onClick={() => handleBookFilter('pageNumber')}><a>Number of Pages</a></li>
+                        <li onClick={() => handleBookFilter('rating')}><a>Rating</a></li>
+                        <li onClick={() => handleBookFilter('publishedYear')}><a>Published Year</a></li>
                     </ul>
                 </details>
             </div>
@@ -48,7 +66,7 @@ const ListedBooks = () => {
                 <TabPanel >
                     <div className="space-y-4">
                         {
-                            storedReadBooks.map(storedBook => <ReadBooks storedBook={storedBook} key={storedBook.bookId}></ReadBooks>)
+                            displayReadBooks.map(storedBook => <ReadBooks storedBook={storedBook} key={storedBook.bookId}></ReadBooks>)
                         }
                     </div>
                 </TabPanel>

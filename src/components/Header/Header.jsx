@@ -56,7 +56,7 @@ const Header = () => {
                         }}>Publishers</NavLink></li>
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end hidden sm:flex">
                     <a className="btn bg-[#23BE0A] text-white hover:text-[#23BE0A] hover:bg-[#E2E8F0] hover:border-[#fff]">Sign In</a>
                     <a className="btn bg-[#59C6D2] text-white hover:text-[#59C6D2] hover:bg-[#E2E8F0] hover:border-[#fff]">Sign Up</a>
                 </div>
